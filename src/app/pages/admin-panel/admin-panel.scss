@@ -1,0 +1,109 @@
+
+$bg-gradient-start: #1b1524;
+$bg-gradient-mid: #0b0c12;
+$bg-gradient-end: #05060a;
+
+$surface-card: #1c1c1c;
+$surface-input: #151515;
+
+$border-dark: #333333;
+$border-input: rgb(109, 109, 109);
+
+$primary-red: #ff0011;
+$primary-hover: #ff2937;
+$text-light: #f1f3f7;
+
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100dvh;
+  width: 100%;
+  background: radial-gradient(
+    circle at center,
+    $bg-gradient-start 0%,
+    $bg-gradient-mid 55%,
+    $bg-gradient-end 100%
+  );
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  color: $text-light;
+}
+
+.content {
+  width: min(1100px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+
+.cadastro-level {
+  background-color: $surface-card;
+  padding: 32px;
+  border: 1px solid $border-dark;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+
+  form {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(456px, 1fr));
+    gap: 16px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    background-color: $surface-input;
+    color: white;
+    font-size: large;
+    border: 1px solid $border-input;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.4s ease;
+
+  
+    &:focus {
+      border: 1px solid $primary-red;
+      box-shadow: 0 0 4px rgba(255, 0, 0, 0.28);
+    }
+  }
+
+  button {
+    background-color: $primary-red;
+    outline: none;
+    border: none;
+    padding: 12px;
+    font-size: large;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    grid-column: 1 / -1;
+    transition: 0.3s ease;
+    cursor: pointer;
+
+  
+    &:hover {
+      background-color: $primary-hover;
+      transform: scale(1.015);
+    }
+  }
+}
+
+.field {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  font-weight: bold;
+}

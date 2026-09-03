@@ -1,0 +1,58 @@
+<main class="admin-main">
+    <div class="content">
+    <section class="cadastro-level">
+        
+        <form (ngSubmit)="cadastrarLevel()">
+        <div class="form-groups">
+            <div class="field">
+                <label for="name">Name</label>
+                <input [(ngModel)]="novoLevel.name" name="name" placeholder="Ex: Society">
+            </div>
+            
+            <div class="field">
+                <label for="description">Description</label>
+                <input [(ngModel)]="novoLevel.description" name="description" placeholder="Ex: This level is...">
+            </div>
+            
+            <div class="field">
+                <label for="position">Position</label>
+                 <input [(ngModel)]="novoLevel.position" name="position" placeholder="Ex: 1">
+            </div>
+           
+            <div class="field">
+                <label for="image">Path</label>
+                <input [(ngModel)]="novoLevel.image" name="image" placeholder="Ex: '/level.jpg'" [maxLength]="3" minlength="1">
+            </div>
+            
+            <div class="field">
+                <label for="video">Vídeo URL</label>
+                <input [(ngModel)]="novoLevel.video" name="video" placeholder="Ex: https://www.youtube.com">
+            </div>
+            
+            <button type="submit">cadastrar Level</button>
+        </div>
+        
+        </form>
+    </section>
+    
+    <section class="levels">
+         @for(level of levels(); track level.id){
+            <article class="level-card">
+                <a [href]="level.video">
+                    <img [src]="level.image" alt="">
+                </a>
+                <div class="info">
+                    <h1>{{level.position}} - {{level.name}}</h1>
+                    <span>{{level.id}}</span>
+                </div>
+                
+                <p>{{level.description}}</p>
+                
+            </article>
+        }@empty{
+            <h1>Nenhum level encontrado... </h1>
+        }
+    </section>
+   
+    </div> 
+</main>
