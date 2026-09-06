@@ -1,5 +1,13 @@
+<app-side-menu
+[isOpen]="isMenuOpen"
+(toogle)="toogleMenu()"
+></app-side-menu>
 
+@if(isMenuOpen){
+    <div class="overlay" (click)="toogleMenu()"></div>
+}
 
-
-
-<router-outlet />
+<main class="main-content" [class.dimmed]="isMenuOpen" (click)="isMenuOpen && toogleMenu()">
+    
+    <router-outlet />
+</main>

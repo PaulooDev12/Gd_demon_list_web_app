@@ -48,12 +48,16 @@ main {
   border: 1px solid $border-dark;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.4s ease;
 
   form {
     display: flex;
     padding: 16px;
     flex-direction: column;
     gap: 16px;
+    
   }
 
   .form-groups {
@@ -98,6 +102,10 @@ main {
       background-color: $primary-hover;
       transform: scale(1.015);
     }
+  }
+  &.visible{
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

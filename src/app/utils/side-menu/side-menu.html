@@ -1,0 +1,14 @@
+<button class="toogle-btn" (click)="onClose()">
+    ☰
+</button>
+
+<aside class="sidebar" [class.open]="isOpen">
+    <button class="close-btn" (click)="onClose()">Fechar</button>
+    <nav>
+        <ul>
+            <li><a href="#">Início</a></li>
+ 
+            <li><a href="#">Configurações</a></li>
+        </ul>
+  </nav>
+</aside>

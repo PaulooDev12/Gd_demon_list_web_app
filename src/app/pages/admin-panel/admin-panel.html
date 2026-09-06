@@ -1,6 +1,11 @@
 <main class="admin-main">
     <div class="content">
-    <section class="cadastro-level">
+    <section class="cadastro-level" 
+        appObserverVisibilty
+        [threshold]="0.3"
+        [class.visible]="isVisible"
+        (visible)="onElementVisible($event)"
+    >
         
         <form (ngSubmit)="cadastrarLevel()">
         <div class="form-groups">

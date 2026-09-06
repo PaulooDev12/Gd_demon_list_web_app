@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GdListService } from '../../services/gd-list-service';
 import { AdminReqDto, ResponseDto } from '../../models/admin.model';
+import { ObserverVisibilty } from "../../directives/observer-visibilty";
 
 @Component({
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ObserverVisibilty],
   selector: 'app-admin-panel',
   styleUrl: './admin-panel.scss',
   templateUrl: './admin-panel.html',
 })
 
 export class AdminPanel implements OnInit{
+  isVisible: boolean = false;
+  private cdr = inject(ChangeDetectorRef);
 
   novoLevel: AdminReqDto = {
       name: 'Acheron',
@@ -25,7 +28,15 @@ export class AdminPanel implements OnInit{
   levels = signal<ResponseDto[]>([]);
   ngOnInit(): void {
     this.carregarLevels();
+    
   }
+  onElementVisible(visible: boolean){
+    if(visible && !this.isVisible){
+      this.isVisible = true;
+      this.cdr.detectChanges();
+    }
+  }
+
   carregarLevels(): void{
     this.service.getMainPage().subscribe({
      next: (data) => this.levels.set(data),
@@ -50,4 +61,5 @@ export class AdminPanel implements OnInit{
       error: (err) => console.log("Erro: ", err)
     })
   }
+  
 }
