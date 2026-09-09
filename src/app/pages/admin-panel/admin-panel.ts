@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { GdListService } from '../../services/gd-list-service';
 import { AdminReqDto, ResponseDto } from '../../models/admin.model';
 import { ObserverVisibilty } from "../../directives/observer-visibilty";
@@ -30,6 +30,7 @@ export class AdminPanel implements OnInit{
     this.carregarLevels();
     
   }
+  
   onElementVisible(visible: boolean){
     if(visible && !this.isVisible){
       this.isVisible = true;
@@ -43,13 +44,22 @@ export class AdminPanel implements OnInit{
      error: (err) => console.log("Ocoreu um erro ao carregar os levels", err)
     });
   }
-  cadastrarLevel(): void{
+  cadastrarLevel(form: NgForm): void{
+    if (form.invalid) {
+    console.warn('Formulário inválido! Verifique os campos:', form.errors);
+    return;
+  }
+
     this.service.salvarLevel(this.novoLevel).subscribe({
       next: () => {
         alert("level salvo!");
         this.carregarLevels();
       },
-      error: (err) => console.log("um erro inseperado ocorreu: ", err)
+      error: (err) => {console.log("um erro inseperado ocorreu: ", err)
+      if (err.status === 400) {
+        console.warn("Verifique se os dados enviados correspondem às validações do Spring Boot (AdminReqDto Java).");
+      }
+    }
     })
   }
   excluirLevel(id: string): void{

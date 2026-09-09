@@ -22,7 +22,7 @@ export class GdListService {
     return this.http.get<AdminResponse[]>(`${this.ADMIN_URL}/listaradm`);
    }
    deletarLevel(id: string): Observable<void>{
-    return this.http.delete<void>(`${this.ADMIN_URL}/{id}`);
+    return this.http.delete<void>(`${this.ADMIN_URL}/${id}`);
    }
    editarLevel(id: string, dto: AdminReqDto): Observable<void>{
     return this.http.put<void>(`${this.ADMIN_URL}/level/{id}`, dto);

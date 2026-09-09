@@ -1,8 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+$bg-gradient-start: #1b1524;
+$bg-gradient-mid: #0b0c12;
+$bg-gradient-end: #05060a;
+
+$surface-card: #0f0f0f;
+$surface-input: #151515;
+
+$border-dark: #333333;
+$border-input: rgb(109, 109, 109);
+
+$primary-red: #ff0011;
+$primary-hover: #ff2937;
+$text-light: #f1f3f7;
 html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
     margin: 0 auto;
+   
+  background: radial-gradient(
+    circle at center,
+    $bg-gradient-start 0%,
+    $bg-gradient-mid 55%,
+    $bg-gradient-end 100%
+  );
+  background-attachment: fixed;
     
+}
+.level-card{
+    background-color: $surface-card;
+    width: 100%;
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $primary-red;
+    box-shadow: 0 0 4px rgba(255,0,0, 0.6);
+    border-radius: 4px;
+    gap: 16px;
 }

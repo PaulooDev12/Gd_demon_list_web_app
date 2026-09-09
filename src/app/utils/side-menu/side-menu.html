@@ -3,12 +3,12 @@
 </button>
 
 <aside class="sidebar" [class.open]="isOpen">
-    <button class="close-btn" (click)="onClose()">Fechar</button>
+    <button class="close-btn" (click)="onClose()" (keydown.escape)="onClose()">Fechar</button>
     <nav>
         <ul>
-            <li><a href="#">Início</a></li>
+            <li> <a routerLink="/">Início</a> </li>
  
-            <li><a href="#">Configurações</a></li>
+            <li><a routerLink="/admin">Painel Admin</a></li>
         </ul>
   </nav>
 </aside>

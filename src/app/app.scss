@@ -1,26 +1,5 @@
-$background-overlay: rgba(0, 0, 0, 0.6);
 
-.main-content{
-    transition: 0.3s linear;
-    &.dimmed{
-        filter: brightness(0.6);
-        pointer-events: none;
-        user-select: none;
-    }
-}
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100dvw;
-    height: 100dvh;
-    background-color: $background-overlay;
-    backdrop-filter: blur(6px);
-    z-index: 999;
-    
-    @keyframes fadeIn{
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-    animation: fadeIn 0.25s ease-in-out;
+.divider{
+    width: none;
+    margin-bottom: 80px;
 }

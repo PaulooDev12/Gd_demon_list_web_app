@@ -1,1 +1,31 @@
-<p>main-list works!</p>
+<main class="main-list">
+    <div class="content">
+
+    
+    <section class="levels">    
+        @for(level of levels(); track level.id){
+            <article class="level-card"
+            appObserverVisibilty
+            [threshold]="0.3"
+            [class.reveal]="isVisible"
+            (visible)="onElementVisible($event)"
+            >
+                <a [href]="level.video">
+                   <img [src]="level.image" alt=""> 
+                </a>
+                
+                <div class="level-info">
+                <h3>#{{level.position}} - {{level.name}} </h3> 
+                <span></span>
+                </div>
+            </article>
+           
+        }
+         
+        @empty {
+            <h1>Nenhum level encontrado</h1>
+        }
+
+    </section>
+    </div>
+</main>

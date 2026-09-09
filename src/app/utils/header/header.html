@@ -1,0 +1,10 @@
+<header class="side" (keydown.escape)="toogleMenu()">
+    <app-side-menu
+    [isOpen]="isMenuOpen"
+    (toogle)="toogleMenu()"
+    ></app-side-menu>
+</header>
+@if(isMenuOpen){
+    <div class="overlay" (click)="toogleMenu()"></div>
+}
+

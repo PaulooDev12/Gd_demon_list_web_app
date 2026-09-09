@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
-import { SideMenu } from "./utils/side-menu/side-menu";
+import { Header } from './utils/header/header';
 
 @Component({
-  imports: [RouterOutlet, SideMenu],
+  imports: [RouterOutlet, Header],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html'
 })
 export class App{
-    isMenuOpen: boolean = false;
-    toogleMenu(): void{
-      this.isMenuOpen = !this.isMenuOpen;
-    }
+   
 }

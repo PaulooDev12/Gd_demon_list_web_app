@@ -2,6 +2,7 @@ $primary-red: #ff0011;
 $primary-hover: #ff2937;
 $bg-side-menu: #1c1c1c;
 
+
 .toogle-btn {
   font-size: 20px;
   padding: 10px 15px;
@@ -46,6 +47,7 @@ $bg-side-menu: #1c1c1c;
         color: #fff;
         text-decoration: none;
         transition: background 0.2s;
+        cursor: pointer;
 
         &:hover {
           background-color: #333;

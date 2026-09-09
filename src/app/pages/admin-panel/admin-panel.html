@@ -7,7 +7,7 @@
         (visible)="onElementVisible($event)"
     >
         
-        <form (ngSubmit)="cadastrarLevel()">
+        <form #levelForm="ngForm" (ngSubmit)="cadastrarLevel(levelForm)">
         <div class="form-groups">
             <div class="field">
                 <label for="name">Name</label>
@@ -21,12 +21,12 @@
             
             <div class="field">
                 <label for="position">Position</label>
-                 <input [(ngModel)]="novoLevel.position" name="position" placeholder="Ex: 1">
+                 <input type="number" [(ngModel)]="novoLevel.position" (ngModelChange)="novoLevel.position = $event ? +$event : null" name="position" placeholder="Ex: 1">
             </div>
            
             <div class="field">
                 <label for="image">Path</label>
-                <input [(ngModel)]="novoLevel.image" name="image" placeholder="Ex: '/level.jpg'" [maxLength]="3" minlength="1">
+                <input [(ngModel)]="novoLevel.image" name="image" placeholder="Ex: '/level.jpg'">
             </div>
             
             <div class="field">
@@ -34,7 +34,7 @@
                 <input [(ngModel)]="novoLevel.video" name="video" placeholder="Ex: https://www.youtube.com">
             </div>
             
-            <button type="submit">cadastrar Level</button>
+            <button type="submit" >cadastrar Level</button>
         </div>
         
         </form>
@@ -48,10 +48,12 @@
                 </a>
                 <div class="info">
                     <h1>{{level.position}} - {{level.name}}</h1>
-                    <span>{{level.id}}</span>
+                    <span>id: {{level.id}}</span>
                 </div>
-                
-                <p>{{level.description}}</p>
+                <div class="util">
+                    <p>{{level.description}}</p>
+                <button (click)="this.excluirLevel(level.id)">Deletar</button>
+                </div>
                 
             </article>
         }@empty{
